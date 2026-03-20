@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Eid Mubarak ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background canvas (stars, moon, mosque) -->
+  <canvas id="bgC"></canvas>
+
+  <!-- Confetti / fireworks canvas -->
+  <canvas id="confC"></canvas>
+
+  <!-- Eid Mubarak Nasheed — Tala Al Badru Alayna (vocals only, no instruments) -->
+  <audio id="eidMusic" loop>
+    <source src="./music.mp3" type="audio/mpeg">
+    
+  </audio>
+  <button id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+
+  <!-- ═══════════════════════════════════
+       PAGE 1 — WELCOME / FORM
+  ═══════════════════════════════════ -->
+  <div id="page1" class="page active">
+
+    <div class="p1-wrap">
+      <!-- Decorative glow orbs -->
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+
+      <div class="p1-card">
+        <!-- Top gold border -->
+        <div class="geo-border"></div>
+
+        <!-- Corner ornaments -->
+        <span class="corner tl">✦</span>
+        <span class="corner tr">✦</span>
+        <span class="corner bl">✦</span>
+        <span class="corner br">✦</span>
+
+        <!-- Bismillah -->
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+
+        <!-- Decorative divider -->
+        <div class="divider">
+          <div class="dl"></div>
+          <span class="di">🌙</span>
+          <div class="dl"></div>
+        </div>
+
+        <!-- Main heading -->
+        <h1 class="eid-title">Eid Mubarak</h1>
+        <p class="subtitle">عيد مبارك</p>
+
+        <!-- Name input -->
+        <div class="form-group">
+          <label>✨ Your Name</label>
+          <div class="iw">
+            <span class="ii">🌙</span>
+            <input
+              type="text"
+              id="nameInput"
+              placeholder="Enter your blessed name…"
+              maxlength="40"
+            >
+          </div>
+          <div class="err" id="nameErr">Please enter your name to continue.</div>
+        </div>
+
+        <!-- Gender selector -->
+        <div class="gg">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--gold-l);letter-spacing:.8px;margin-bottom:8px;padding-left:2px;">
+            ✨ Select Gender
+          </label>
+          <div class="gopts">
+            <div class="gc">
+              <input type="radio" name="gender" id="gMale" value="male">
+              <label class="glbl" for="gMale">
+                <span class="gico">🧔</span>
+                <span class="gtxt">Male</span>
+              </label>
+            </div>
+            <div class="gc">
+              <input type="radio" name="gender" id="gFemale" value="female">
+              <label class="glbl" for="gFemale">
+                <span class="gico">👰</span>
+                <span class="gtxt">Female</span>
+              </label>
+            </div>
+          </div>
+          <div class="err" id="genderErr">Please select your gender.</div>
+        </div>
+
+        <!-- Submit button -->
+        <button class="btn-start" onclick="startGreeting()">✦ Begin Celebration ✦</button>
+      </div>
+    </div>
+
+    <div class="footer" style="position:relative;z-index:2;background:transparent;">
+      Developed with ❤️ by <span>Maliha</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       PAGE 2 — GREETING CARD
+  ═══════════════════════════════════ -->
+  <div id="page2" class="page">
+
+    <!-- Floating lanterns in background -->
+    <div class="bgl-wrap">
+      <span class="bgl">🪔</span>
+      <span class="bgl">🪔</span>
+      <span class="bgl">🪔</span>
+      <span class="bgl">🪔</span>
+      <span class="bgl">🪔</span>
+      <span class="bgl">🪔</span>
+    </div>
+
+    <!-- Large animated title -->
+    <div class="big-wrap">
+      <h1 class="big-title">Eid Mubarak</h1>
+      <div class="star-strip">
+        <span class="ss">✦</span>
+        <span class="ss">⭐</span>
+        <span class="ss">🌙</span>
+        <span class="ss">⭐</span>
+        <span class="ss">✦</span>
+      </div>
+    </div>
+
+    <!-- Greeting card -->
+    <div class="g-card">
+      <!-- Top gold bar -->
+      <div class="g-card-bar"></div>
+
+      <!-- Inner glow ring -->
+      <div class="g-glow-ring"></div>
+
+      <!-- Corner gems -->
+      <span class="gem tl">❋</span>
+      <span class="gem tr">❋</span>
+      <span class="gem bl">❋</span>
+      <span class="gem br">❋</span>
+
+      <!-- Islamic ornament strip -->
+      <div class="arabesque">
+        <span>✦</span>
+        <span>☽</span>
+        <span>✦</span>
+        <span>☽</span>
+        <span>✦</span>
+      </div>
+
+      <!-- Arabic greeting -->
+      <div class="cbismi">عيد مبارك وعيد سعيد</div>
+
+      <!-- Divider -->
+      <div class="cdiv">
+        <span class="cdl"></span>
+        <span class="cdi">☽</span>
+        <span class="cdl"></span>
+      </div>
+
+      <!-- Swinging lanterns row -->
+      <div class="lrow">
+        <span class="lh sm d2">🪔</span>
+        <span class="lh md d3">🪔</span>
+        <span class="lh lg">🕌</span>
+        <span class="lh md">🪔</span>
+        <span class="lh sm d2">🪔</span>
+      </div>
+
+      <!-- Personalised greeting (filled by JS) -->
+      <p class="gname" id="greetName"></p>
+
+      <!-- Blessing text -->
+      <p class="gsub">Wishing you happiness, peace and countless blessings this Eid.</p>
+
+      <!-- Small divider -->
+      <div class="cdiv-sm">
+        <span class="cdl"></span>
+        <span class="cdi" style="font-size:11px;">✦</span>
+        <span class="cdl"></span>
+      </div>
+
+      <!-- Arabic dua -->
+      <p class="garab">تَقَبَّلَ اللهُ مِنَّا وَمِنكُم</p>
+
+      <!-- Signature -->
+      <p class="from-m">— From Maliha 💛</p>
+
+      <!-- Surprise button -->
+      <button class="btn-surp" onclick="openSurprise()">
+        <span class="spk">✨</span>&nbsp; Click for a Surprise &nbsp;<span class="spk">✨</span>
+      </button>
+
+      <!-- Back button -->
+      <button class="btn-back" onclick="goBack()">← Go Back</button>
+    </div>
+
+    <div class="footer" style="margin-top:22px;position:relative;z-index:2;background:transparent;">
+      Developed with ❤️ by <span>Maliha</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
